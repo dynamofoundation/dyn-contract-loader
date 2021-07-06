@@ -36,7 +36,27 @@ int main()
 {
     using json = nlohmann::json;
 
-    json j = "{ \"id\": 0, \"method\" : \"sendtoaddress\", \"params\" : [ \"dy1qxj4awv48k7nelvwwserdl9wha2mfg6w3wy05fc\" , 0.1], \"contract_code\" : \"01020304\"  }"_json;
+    //////////////////          CREATE CONTRACT
+    // 
+    //0109test_send0000   74 65 73 74 5f 73 65 6e 64
+    //28 02 00 00             get address of DYN sent from into memory pos 0
+    //27 02 00 20             get amount of DYN sent into contract
+    //22 02 00 00 02 00 20    send dyn back to same addr in same amt 
+
+    //0109746573745f73656e640000280200002702002023020000020020
+
+    json j = "{ \"id\": 0, \"method\" : \"sendtoaddress\", \"params\" : [ \"dy1q6y6uv9thwl99up2l4pj9q3l4lfuwml6wn5863q\" , 0.2], \"contract_code\" : \"0109746573745f73656e640000280200002702002022020000020020\"  }"_json;
+
+
+
+    //////////////////          EXECUTE CONTRACT
+    // 
+    //test_send      74 65 73 74 5f 73 65 6e 64
+    //data paypload len 0     0000
+
+    //09746573745f73656e640000
+
+    //json j = "{ \"id\": 0, \"method\" : \"sendtoaddress\", \"params\" : [ \"dy1q6y6uv9thwl99up2l4pj9q3l4lfuwml6wn5863q\" , 0.2], \"contract_exec\" : \"09746573745f73656e640000\"  }"_json;
 
     std::string jData = j.dump();
 
